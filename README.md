@@ -4,7 +4,7 @@ Notes and exercises of studying [*Structure and Interpretation Computer Programs
 
 ## Table Of Contents
 
-- [Chapter 1: Building Abstractions with Procedures](./Chapter1.md)
+- [Chapter 1: Building Abstractions with Procedures](./Chapter1.md)
 
 ## License
 
