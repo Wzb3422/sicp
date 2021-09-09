@@ -127,3 +127,26 @@ What happens when Alyssa attempts to use this to compute square roots? Explain.
 
 **My Explanation:**
 
+What will happen? 
+
+The program never exits. It is caught in infinite recursion.
+
+Alyssa substitutes `new-if` function for `if` express. The difference is that when a function is called, Scheme attempts to evaluate all of the arguments. While `(good-enough? guess x)` can be successfully evaluated, `(sqrt-iter (improve guess x) x)))` will be caught in a infinite recursion.
+
+**Exercise 1.7:**
+
+The `good-enough?` test used in computing square roots will not be very effective for finding the square roots of very small numbers. Also, in real computers, arithmetic operations are almost always performed with limited precision. This makes our test inadequate for very large numbers. Explain these statements, with examples showing how the test fails for small and large numbers. An alternative strategy for implementing `good-enough?` is to watch how guess changes from one iteration to the next and to stop when the change is a very small fraction of the guess. Design a square-root procedure that uses this kind of end test. Does this work better for small and large numbers?
+
+**My Explanation:**
+
+The problem with `good-enough?` procedure for small numbers is that when the radicant is much smaller than 0.001, the hardcoded threshold. The logic does NOT improves the result any further, for the guess has passed the threshold.
+
+The problem with larger numbers: when you enter a super large number, like `891289367812936781283671986123` , the program will be stuck in a endless loop, as the it can't imporve the guess any further.
+
+Hence, the threshold should NOT be hardcoded. 
+
+```scheme
+(define (within-delta? x y delta)
+  (<= (abs (- x y)) delta))
+```
+
